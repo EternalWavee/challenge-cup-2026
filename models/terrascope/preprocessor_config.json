@@ -1,0 +1,19 @@
+{
+  "image_processor_type": "MiniCPMV4_6ImageProcessor",
+  "processor_class": "MiniCPMV4_6Processor",
+  "max_slice_nums": 9,
+  "scale_resolution": 448,
+  "patch_size": 14,
+  "use_image_id": true,
+  "slice_mode": true,
+  "image_mean": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "image_std": [
+    0.5,
+    0.5,
+    0.5
+  ]
+}

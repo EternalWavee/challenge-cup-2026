@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>天枢·遥感 | TerraScope</title>
+  <meta name="title" content="TerraScope：面向端侧部署的多模态遥感影像理解系统">
+  <meta name="description" content="TerraScope 是一套面向端侧部署的多模态遥感影像理解系统，支持自然语言交互与专业语义分割。">
+  <meta name="keywords" content="TerraScope, remote sensing, multimodal model, visual grounding, object counting, semantic segmentation, MiniCPM-V, SegFormer">
+  <meta name="author" content="Hengtao Wu, Ningkai Wu, Xuanrui Cui, Yanchen Li, Hao Li">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0b4f9c">
+
+  <link rel="canonical" href="https://eternalwavee.github.io/challenge-cup-2026/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="TerraScope">
+  <meta property="og:title" content="TerraScope：多模态遥感影像理解">
+  <meta property="og:description" content="以紧凑视觉语言模型和分割专家实现航拍与卫星影像的自然语言解译。">
+  <meta property="og:url" content="https://eternalwavee.github.io/challenge-cup-2026/">
+  <meta property="og:image" content="https://eternalwavee.github.io/challenge-cup-2026/static/images/terrascope-logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TerraScope">
+  <meta name="twitter:description" content="一套面向端侧部署的多模态遥感影像理解系统。">
+  <meta name="twitter:image" content="https://eternalwavee.github.io/challenge-cup-2026/static/images/terrascope-logo.png">
+
+  <link rel="icon" type="image/png" href="static/images/sjtu-emblem.png">
+  <link rel="apple-touch-icon" href="static/images/sjtu-emblem.png">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "TerraScope",
+    "description": "一套面向端侧部署的多模态遥感影像理解系统。",
+    "codeRepository": "https://github.com/EternalWavee/challenge-cup-2026",
+    "datePublished": "2026-08-27",
+    "programmingLanguage": ["Python", "TypeScript"],
+    "author": [
+      {"@type": "Person", "name": "Hengtao Wu"},
+      {"@type": "Person", "name": "Ningkai Wu"},
+      {"@type": "Person", "name": "Xuanrui Cui"},
+      {"@type": "Person", "name": "Yanchen Li"},
+      {"@type": "Person", "name": "Hao Li"}
+    ],
+    "affiliation": {"@type": "CollegeOrUniversity", "name": "Shanghai Jiao Tong University"},
+    "license": "https://www.apache.org/licenses/LICENSE-2.0"
+  }
+  </script>
+</head>
+
+<body>
+  <nav class="top-nav" aria-label="Project sections">
+    <div class="top-nav-inner">
+      <div class="top-nav-links">
+        <a href="#abstract">Abstract</a>
+        <a href="#method">System</a>
+        <a href="#results">Results</a>
+        <a href="#demos">Demos</a>
+        <a href="#models">Models</a>
+      </div>
+    </div>
+  </nav>
+
+  <button class="scroll-to-top" type="button" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up" aria-hidden="true"></i>
+  </button>
+
+  <main id="main-content">
+    <section class="hero publication-header">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="has-text-centered">
+            <div class="brand-lockup" aria-label="TerraScope and Shanghai Jiao Tong University">
+              <img class="brand-mark brand-mark-terrascope" src="static/images/terrascope-logo.png" alt="TerraScope model logo">
+              <span class="brand-divider" aria-hidden="true"></span>
+              <img class="brand-mark brand-mark-sjtu" src="static/images/sjtu-emblem.png" alt="Shanghai Jiao Tong University emblem">
+            </div>
+
+            <p class="project-kicker">TerraScope · 天枢遥感</p>
+            <h1 class="title is-1 publication-title">
+              面向端侧部署的多模态遥感影像理解系统
+            </h1>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><a href="https://github.com/EternalWavee" target="_blank" rel="noopener">Hengtao Wu</a>,</span>
+              <span class="author-block"><a href="https://github.com/kiny007" target="_blank" rel="noopener">Ningkai Wu</a>,</span>
+              <span class="author-block"><a href="https://github.com/Xrrr-Ray" target="_blank" rel="noopener">Xuanrui Cui</a>,</span>
+              <span class="author-block"><a href="https://github.com/yanchen12513" target="_blank" rel="noopener">Yanchen Li</a>,</span>
+              <span class="author-block"><a href="https://github.com/willaright" target="_blank" rel="noopener">Hao Li</a></span>
+            </div>
+
+            <div class="is-size-5 publication-authors publication-affiliation">
+              <span class="author-block">Shanghai Jiao Tong University</span>
+            </div>
+
+            <div class="publication-links" aria-label="Project resources">
+              <span class="link-block">
+                <a href="https://github.com/EternalWavee/challenge-cup-2026" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github" aria-hidden="true"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://modelscope.cn/models/LazySheep006/TerraScope-1.3B" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-cube" aria-hidden="true"></i></span>
+                  <span>TerraScope-1.3B</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://modelscope.cn/models/LazySheep006/TerraScope-Segformer" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-layer-group" aria-hidden="true"></i></span>
+                  <span>Segmentation</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://pan.sjtu.edu.cn/web/share/0310508fe7468caeeef66e84b5545244" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-light resource-button" data-offline-release aria-haspopup="dialog">
+                  <span class="icon"><i class="fas fa-download" aria-hidden="true"></i></span>
+                  <span>Offline Release</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section hero is-light" id="abstract">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified abstract-copy">
+              <p>
+                TerraScope 是一套面向端侧部署的多模态遥感影像解译系统。系统以基于 MiniCPM-V 4.6 适配的 1.3B 视觉语言模型为核心，并发布合并后的 BF16 权重。面对单幅影像或双时相影像，用户无需添加任务前缀或结构化指令，即可完成场景识别、图像描述、视觉问答、目标计数、视觉定位与变化理解。对于像素级密集预测，系统集成了适配 LoveDA 七类地物的 SegFormer-B5 专家模型。轻量级路由层依据自然语言请求选择合适的模型，并通过统一的 Web 与 API 接口返回结果。整套系统可在离线、资源受限的环境中运行。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contributions">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Highlights</h2>
+        <ol class="contribution-list">
+          <li>
+            <span class="contribution-number">01</span>
+            <div><strong>紧凑的遥感视觉语言模型。</strong> TerraScope 面向航拍与卫星影像适配 MiniCPM-V 4.6，并提供合并 BF16 权重的独立 1.3B 模型。</div>
+          </li>
+          <li>
+            <span class="contribution-number">02</span>
+            <div><strong>自然语言多任务交互。</strong> 同一套界面可处理单图与双时相输入，覆盖描述、识别、问答、计数、定位和变化理解。</div>
+          </li>
+          <li>
+            <span class="contribution-number">03</span>
+            <div><strong>面向密集预测的专家协同。</strong> SegFormer-B5 专家通过轻量路由和模型侧回退机制，提供指定类别及全场景语义分割。</div>
+          </li>
+          <li>
+            <span class="contribution-number">04</span>
+            <div><strong>面向离线部署的工程集成。</strong> 项目包含推理、结果解析、定位与分割可视化、统一 Web/API 入口，以及可复现的运行环境。</div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section hero is-light" id="method">
+      <div class="container is-widescreen">
+        <h2 class="title is-3 has-text-centered">System Overview</h2>
+        <p class="section-lead has-text-centered">
+          自然语言请求经轻量路由进入视觉语言模型或语义分割专家，随后被解析为统一的文本与可视化结果。
+        </p>
+        <figure class="system-figure">
+          <a href="static/images/terrascope-system.png" target="_blank" rel="noopener" aria-label="Open the full-resolution system overview">
+            <img src="static/images/terrascope-system.png" alt="TerraScope system architecture" loading="lazy">
+          </a>
+          <figcaption>TerraScope 将任务感知的多模态模型、专业分割模型与轻量工程层组合为可离线部署的完整系统。</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="results">
+      <div class="container is-widescreen">
+        <h2 class="title is-3 has-text-centered">Qualitative Results</h2>
+        <p class="section-lead has-text-centered">
+          以下样例选自公开评测集。定位样例对比模型预测框与参考框，其余样例展示模型生成结果。
+        </p>
+
+        <div class="result-grid result-grid-grounding">
+          <article class="result-card">
+            <div class="result-card-header">
+              <span class="result-task">Complex Grounding</span>
+              <span class="result-source">XLRS-Bench</span>
+            </div>
+            <div class="annotated-image annotated-image-landscape">
+              <img src="static/qualitative/grounding-complex.jpg" alt="Harbor scene with predicted and reference boxes around a green boat" loading="lazy">
+              <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
+                <rect class="bbox-reference" x="727" y="369" width="35" height="103"></rect>
+                <rect class="bbox-prediction" x="720" y="380" width="40" height="100"></rect>
+              </svg>
+            </div>
+            <div class="bbox-legend" aria-label="Bounding-box legend">
+              <span><i class="legend-line legend-prediction"></i>Prediction</span>
+              <span><i class="legend-line legend-reference"></i>Reference</span>
+              <span class="metric-chip">IoU 0.665</span>
+            </div>
+            <p class="result-prompt">“Locate the upper green boat in the central-right area; water is above it, a moving boat is to its left, and other green boats are below it.”</p>
+          </article>
+
+          <article class="result-card">
+            <div class="result-card-header">
+              <span class="result-task">Referring Grounding</span>
+              <span class="result-source">VRSBench</span>
+            </div>
+            <div class="annotated-image annotated-image-square">
+              <img src="static/qualitative/grounding-ship.png" alt="Remote-sensing image with a grounded ship near the grassy shore" loading="lazy">
+              <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
+                <rect class="bbox-reference bbox-reference-exact" x="380" y="590" width="30" height="60"></rect>
+                <rect class="bbox-prediction bbox-prediction-exact" x="380" y="590" width="30" height="60"></rect>
+              </svg>
+            </div>
+            <div class="bbox-legend" aria-label="Bounding-box legend">
+              <span><i class="legend-line legend-prediction"></i>Prediction</span>
+              <span><i class="legend-line legend-reference"></i>Reference</span>
+              <span class="metric-chip">IoU 1.000</span>
+            </div>
+            <p class="result-prompt">“Locate the ship docked on the grassy shore near the center of the image.”</p>
+          </article>
+
+          <article class="result-card result-card-quantity">
+            <div class="quantity-visual">
+              <img src="static/qualitative/quantity-storage-tanks.png" alt="Aerial image containing four large storage tanks" loading="lazy">
+            </div>
+            <div class="quantity-copy">
+              <div class="result-card-header">
+                <span class="result-task">Quantity</span>
+                <span class="result-source">VRSBench val</span>
+              </div>
+              <h3>Simple Object Counting</h3>
+              <p class="result-prompt">“How many large storage tanks are visible in the image?”</p>
+              <dl class="quantity-metrics" aria-label="Quantity evaluation result">
+                <div>
+                  <dt>Prediction</dt>
+                  <dd>4</dd>
+                </div>
+                <div>
+                  <dt>Reference</dt>
+                  <dd>4</dd>
+                </div>
+              </dl>
+              <div class="quantity-verdict">
+                <span><i class="fas fa-circle-check" aria-hidden="true"></i> Exact Match</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="result-grid result-grid-reasoning">
+          <article class="result-card">
+            <div class="result-card-header">
+              <span class="result-task">Image Description</span>
+              <span class="result-source">VRSBench</span>
+            </div>
+            <img class="result-image" src="static/qualitative/caption-residential.png" alt="Residential area surrounded by vegetation with a swimming pool" loading="lazy">
+            <div class="result-answer">
+              <span class="answer-label">Prediction</span>
+              <p>The image shows a high-resolution view of a residential area with houses surrounded by dense vegetation. A small swimming pool is located in the bottom-right of the image.</p>
+            </div>
+          </article>
+
+          <article class="result-card">
+            <div class="result-card-header">
+              <span class="result-task">High-Resolution VQA</span>
+              <span class="result-source">MME-RealWorld-RS</span>
+            </div>
+            <img class="result-image result-image-wide" src="static/qualitative/vqa-toronto.jpg" alt="High-resolution aerial view of Toronto" loading="lazy">
+            <p class="result-prompt">Where is the high sightseeing tower in the picture?</p>
+            <div class="result-answer result-answer-compact">
+              <span class="answer-label">Prediction</span>
+              <p><strong>B · bottom-right</strong></p>
+            </div>
+          </article>
+        </div>
+
+        <article class="result-card result-card-route">
+          <div class="route-visual">
+            <img src="static/qualitative/vqa-route.jpg" alt="High-resolution coastal scene used for route-planning VQA" loading="lazy">
+          </div>
+          <div class="route-copy">
+            <div class="result-card-header">
+              <span class="result-task">Spatial Route Planning</span>
+              <span class="result-source">XLRS-Bench-lite</span>
+            </div>
+            <p class="result-prompt">What is the best route from the large cruise terminal at the center top to the circular hotel complex at the top right?</p>
+            <div class="result-answer result-answer-compact">
+              <span class="answer-label">Prediction</span>
+              <p><strong>A.</strong> Move along the top edge to the right, then slightly downward.</p>
+            </div>
+          </div>
+        </article>
+
+        <div class="change-grid">
+          <article class="result-card change-card">
+            <div class="result-card-header">
+              <span class="result-task">Bi-Temporal Change</span>
+              <span class="result-source">LEVIR-CC test</span>
+            </div>
+            <div class="change-pair">
+              <figure><img src="static/qualitative/change-road-a.png" alt="Road-change scene at time A" loading="lazy"><figcaption>Time A</figcaption></figure>
+              <figure><img src="static/qualitative/change-road-b.png" alt="Road-change scene at time B" loading="lazy"><figcaption>Time B</figcaption></figure>
+            </div>
+            <div class="result-answer result-answer-compact">
+              <span class="answer-label">Prediction</span>
+              <p>A road appears in the desert.</p>
+            </div>
+          </article>
+
+          <article class="result-card change-card">
+            <div class="result-card-header">
+              <span class="result-task">Bi-Temporal Change</span>
+              <span class="result-source">LEVIR-CC test</span>
+            </div>
+            <div class="change-pair">
+              <figure><img src="static/qualitative/change-building-a.png" alt="Building-change scene at time A" loading="lazy"><figcaption>Time A</figcaption></figure>
+              <figure><img src="static/qualitative/change-building-b.png" alt="Building-change scene at time B" loading="lazy"><figcaption>Time B</figcaption></figure>
+            </div>
+            <div class="result-answer result-answer-compact">
+              <span class="answer-label">Prediction</span>
+              <p>A large building is built on the right side of the scene.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="demos">
+      <div class="container is-widescreen">
+        <h2 class="title is-3 has-text-centered">Task Demos</h2>
+        <p class="section-lead has-text-centered">
+          同一套自然语言交互界面支持六类典型遥感任务；GIF 将自动播放，点击可查看原始尺寸。
+        </p>
+        <div class="demo-grid">
+          <figure class="demo-item">
+            <a href="static/demos/scene-classification.gif" target="_blank" rel="noopener">
+              <img src="static/demos/scene-classification.gif" alt="Remote-sensing scene classification demo" loading="lazy">
+            </a>
+            <figcaption><strong>Scene Classification</strong><span>根据单幅影像识别遥感场景类别。</span></figcaption>
+          </figure>
+          <figure class="demo-item">
+            <a href="static/demos/image-description.gif" target="_blank" rel="noopener">
+              <img src="static/demos/image-description.gif" alt="Remote-sensing image description demo" loading="lazy">
+            </a>
+            <figcaption><strong>Image Description</strong><span>生成简洁且符合任务需求的遥感场景描述。</span></figcaption>
+          </figure>
+          <figure class="demo-item">
+            <a href="static/demos/object-counting.gif" target="_blank" rel="noopener">
+              <img src="static/demos/object-counting.gif" alt="Object counting demo" loading="lazy">
+            </a>
+            <figcaption><strong>Quantity</strong><span>Object Counting · 回答自然语言计数问题。</span></figcaption>
+          </figure>
+          <figure class="demo-item">
+            <a href="static/demos/visual-grounding.gif" target="_blank" rel="noopener">
+              <img src="static/demos/visual-grounding.gif" alt="Visual grounding demo" loading="lazy">
+            </a>
+            <figcaption><strong>Visual Grounding</strong><span>返回归一化坐标，并绘制目标预测框。</span></figcaption>
+          </figure>
+          <figure class="demo-item">
+            <a href="static/demos/change-understanding.gif" target="_blank" rel="noopener">
+              <img src="static/demos/change-understanding.gif" alt="Bi-temporal change understanding demo" loading="lazy">
+            </a>
+            <figcaption><strong>Change Understanding</strong><span>比较两个时相并描述其中发生的变化。</span></figcaption>
+          </figure>
+          <figure class="demo-item">
+            <a href="static/demos/semantic-segmentation.gif" target="_blank" rel="noopener">
+              <img src="static/demos/semantic-segmentation.gif" alt="Semantic segmentation demo" loading="lazy">
+            </a>
+            <figcaption><strong>Semantic Segmentation</strong><span>通过 SegFormer-B5 生成指定类别或全场景掩膜。</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section hero is-light" id="models">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Models &amp; Resources</h2>
+        <div class="model-stage-grid">
+          <figure>
+            <a href="static/images/model-stage1.pdf" target="_blank" rel="noopener" aria-label="Open the Stage 1 model diagram as PDF">
+              <img src="static/images/model-stage1.png" alt="Stage 1 remote-sensing foundation model architecture" loading="lazy">
+            </a>
+          </figure>
+          <figure>
+            <a href="static/images/model-stage2.pdf" target="_blank" rel="noopener" aria-label="Open the Stage 2 model diagram as PDF">
+              <img src="static/images/model-stage2.png" alt="Stage 2 high-precision localization enhancement architecture" loading="lazy">
+            </a>
+          </figure>
+        </div>
+        <div class="model-list">
+          <article class="model-row">
+            <div class="model-name">
+              <span class="model-index">M1</span>
+              <div><strong>TerraScope-1.3B</strong><span>Vision-language model</span></div>
+            </div>
+            <p>基于 MiniCPM-V 4.6 适配的遥感影像理解模型，提供合并后的 BF16 权重。</p>
+            <a href="https://modelscope.cn/models/LazySheep006/TerraScope-1.3B" target="_blank" rel="noopener">ModelScope <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          </article>
+          <article class="model-row">
+            <div class="model-name">
+              <span class="model-index">M2</span>
+              <div><strong>TerraScope Segmentation</strong><span>Semantic-segmentation expert</span></div>
+            </div>
+            <p>面向 LoveDA 适配的 SegFormer-B5 模型，支持七类城乡地表覆盖分割。</p>
+            <a href="https://modelscope.cn/models/LazySheep006/TerraScope-Segformer" target="_blank" rel="noopener">ModelScope <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <div class="bibtex-header">
+          <h2 class="title">Citation</h2>
+          <button class="copy-bibtex-btn" type="button" title="Copy BibTeX to clipboard">
+            <i class="fas fa-copy" aria-hidden="true"></i>
+            <span class="copy-text">Copy</span>
+          </button>
+        </div>
+        <pre id="bibtex-code"><code>@software{terrascope2026,
+  title  = {TerraScope: An Edge-Deployable Multimodal System for
+            Remote-Sensing Image Understanding},
+  author = {Wu, Hengtao and Wu, Ningkai and Cui, Xuanrui and
+            Li, Yanchen and Li, Hao},
+  year   = {2026},
+  url    = {https://github.com/EternalWavee/challenge-cup-2026}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <div class="release-modal" id="offline-release-modal" hidden>
+    <div class="release-modal-backdrop" data-release-close></div>
+    <section class="release-modal-card" role="dialog" aria-modal="true" aria-labelledby="offline-release-title">
+      <button class="release-modal-close" type="button" data-release-close aria-label="Close download dialog">
+        <i class="fas fa-xmark" aria-hidden="true"></i>
+      </button>
+      <span class="release-modal-label">Offline Release</span>
+      <h2 id="offline-release-title">下载完整离线包</h2>
+      <p>访问上海交通大学云盘时，请输入以下提取码。</p>
+      <div class="release-code-row">
+        <code>sjtu</code>
+        <button type="button" data-copy-release-code>Copy</button>
+      </div>
+      <div class="release-modal-actions">
+        <button class="button is-light" type="button" data-release-close>Cancel</button>
+        <a class="button is-link" href="https://pan.sjtu.edu.cn/web/share/0310508fe7468caeeef66e84b5545244" target="_blank" rel="noopener" data-release-continue>Continue</a>
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content has-text-centered footer-copy">
+            <p>TerraScope · Shanghai Jiao Tong University · 2026</p>
+            <p class="template-credit">
+              Page adapted from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a>, itself adapted from <a href="https://nerfies.github.io" target="_blank" rel="noopener">Nerfies</a>. Modified for TerraScope. Template-derived page code is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener">CC BY-SA 4.0</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

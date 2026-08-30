@@ -1,0 +1,6 @@
+# Direct non-CUDA dependencies for the Conda installation path.
+# PyTorch, torchvision and the compiled mmcv wheel are installed separately.
+mmengine==0.10.7
+mmsegmentation==1.2.2
+numpy==1.26.4
+pillow==12.3.0

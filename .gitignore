@@ -1,0 +1,57 @@
+# Local runtime configuration
+app/.env
+
+# Local Python environments and optional offline archives
+env/*
+!env/README.md
+!env/install.sh
+!env/requirements/
+!env/requirements/*.txt
+!env/packages/
+env/packages/*
+!env/packages/README.md
+!env/packages/SHA256SUMS
+
+# Model weights are downloaded separately
+models/**/*.safetensors
+models/**/*.bin
+models/**/*.pt
+models/**/*.pth
+
+# Small high-precision routing weights are versioned with the code
+!models/precision-selector/adapter_model.safetensors
+!models/precision-router/top3_policy.pt
+!models/precision-router/top5_residual_policy.pt
+
+# Training and evaluation corpora
+data/*.jsonl
+
+# Private local evaluation samples
+demo_samples/
+
+# Runtime outputs and uploaded images
+runtime/
+app/runtime/
+**/conversations/
+**/visualizations/
+*.log
+*.pid
+
+# Frontend and Python caches
+app/frontend/node_modules/
+.venv/
+*.tsbuildinfo
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.ms_upload_cache
+.coverage
+htmlcov/
+
+# Editor and operating-system files
+.DS_Store
+._*
+.vscode/
+.idea/

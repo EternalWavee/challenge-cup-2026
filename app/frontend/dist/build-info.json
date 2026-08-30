@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "sources": {
+    "index.html": "bf123e8e0bacbf16a272555732b40b6544e6de83aca7f57a23afe3071b57e118",
+    "package.json": "4638733a5ddac847d549dca0d73c92df78f7e92c701bfa28a49b41bd0358f163",
+    "pnpm-lock.yaml": "5cb1b6c50bdc5cd5300db7900ac66c7f051563aa8b31b80b7b354ce04a5b6942",
+    "public/sjtu-emblem.png": "112aa440081904cd37125ccd9b4f383d631461bc570551497ef04afeb41292da",
+    "src/App.tsx": "20b67e1868378dc87d378226d4d8a7d3727a10d6a39dd0adc339e5c5127d54ca",
+    "src/conversationStore.ts": "2870f641d28d3eb74ad40602b2f8cd957c25b0d4d72b5dd03ffbda7787b8e0b0",
+    "src/main.tsx": "0f32096be90c30a5df78af904a66c85f6251fc1ad29c3c07ade13ceb2d9ea6d7",
+    "src/styles.css": "89f14acb06cc0399b74e9771d8edf2535313c2c6934bd71832ab8af72746eee9",
+    "src/theme.css": "c53aaa5d7f6d79a85e1baf682a09c8fe412f183a8f5d3ea38a49bb2fbef9febc",
+    "src/tokens.css": "f048df90153534cbe6b3a546a661fe0324e319841b47837a1c4ce69a77580775"
+  }
+}

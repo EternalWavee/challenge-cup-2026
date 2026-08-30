@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-30T10:40:34.789350+00:00",
+  "files": {
+    "models/terrascope/chat_template.jinja": {
+      "size": 7301,
+      "sha256": "dfe1fa43a3444f065406d3a2b9aa315602f5c146b80cf22e0426a6c1466d85aa"
+    },
+    "models/terrascope/config.json": {
+      "size": 2748,
+      "sha256": "652b4058334427ba0854de99b78cbaaa5515b782acb310c88079762e5c12e634"
+    },
+    "models/terrascope/generation_config.json": {
+      "size": 214,
+      "sha256": "7cf2e3ed8955ab9b8b1f62e9e0a7950aeeec4088875570c5ced74a2e74b103de"
+    },
+    "models/terrascope/model.safetensors": {
+      "size": 2600957560,
+      "sha256": "47ba77fc1baacba26a32a97d1be4a41c862a0b6cc3a8fca443a4521d5b219288"
+    },
+    "models/terrascope/preprocessor_config.json": {
+      "size": 315,
+      "sha256": "eb7cd430865c06eeaad22fcd28c6c606ce26b6fd54d3d6d0e99370779b3197a5"
+    },
+    "models/terrascope/processor_config.json": {
+      "size": 1198,
+      "sha256": "21582ba07ca4af215b9c7ec1738274ba62ce4b34d140051f313144dea7df6817"
+    },
+    "models/terrascope/tokenizer.json": {
+      "size": 19992481,
+      "sha256": "33861e37bb955af1e3f3061182b820f347eba2b9c2c1011c82794bf0d6e77b54"
+    },
+    "models/terrascope/tokenizer_config.json": {
+      "size": 1623,
+      "sha256": "60c7e03ddac207ad9d875283bd87f7dbc2d791cb193a814d1d6f2ce21cfbf638"
+    },
+    "models/precision-selector/adapter_config.json": {
+      "size": 1306,
+      "sha256": "fe405552d5e295f20e84f1ba1459e125c15a49e5d11d790113d583a992628ec8"
+    },
+    "models/precision-selector/adapter_model.safetensors": {
+      "size": 23468056,
+      "sha256": "ca1b5e59e41870214cca9f56620d36cde583d351e83930ddc4aee24c7bed4c67"
+    },
+    "models/precision-router/top3_policy.pt": {
+      "size": 7753,
+      "sha256": "530d65531ed44465e45f2d62b142396db851f6110d7ffd6b53a214e110c076c8"
+    },
+    "models/precision-router/top5_residual_policy.pt": {
+      "size": 12878,
+      "sha256": "55d9ad6e1c7c19a665150f3f1ec8e21f589625fa009063c31bdf56cfffa961aa"
+    },
+    "models/segmentation/config.py": {
+      "size": 2053,
+      "sha256": "dd95096dc3d24ad725888b1f38815bcedfed97ec5853f785380e9800e5458930"
+    },
+    "models/segmentation/checkpoint.pth": {
+      "size": 329694538,
+      "sha256": "391121971959bb6a3e6bdf2ccb0d72c6a5350f897eea19d0f774342e13212f31"
+    }
+  }
+}

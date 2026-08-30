@@ -1,0 +1,6 @@
+.env
+backend/__pycache__/
+backend/app/__pycache__/
+frontend/node_modules/
+*.log
+runtime/
