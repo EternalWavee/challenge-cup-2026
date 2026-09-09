@@ -284,10 +284,12 @@ bash ./env/install.sh offline
 
 ## Citation
 
+团队成员：Hengtao Wu、Xuanrui Cui、Ningkai Wu、Yanchen Li、Hao Li、Yujia Zhang、Haonan Ma、Yufei Yan、Yuting Jiang、Wenxuan Liu、Feiming Wei†、Tao Zhang†、Jin Ma†（† Advisor）。
+
 ```bibtex
 @software{terrascope2026,
   title   = {TerraScope: An Edge-Deployable Multimodal System for Remote-Sensing Image Understanding},
-  author  = {Wu, Hengtao and Wu, Ningkai and Cui, Xuanrui and Li, Yanchen and Li, Hao},
+  author  = {Wu, Hengtao and Cui, Xuanrui and Wu, Ningkai and Li, Yanchen and Li, Hao and Zhang, Yujia and Ma, Haonan and Yan, Yufei and Jiang, Yuting and Liu, Wenxuan and Wei, Feiming and Zhang, Tao and Ma, Jin},
   year    = {2026},
   url     = {https://github.com/EternalWavee/challenge-cup-2026}
 }

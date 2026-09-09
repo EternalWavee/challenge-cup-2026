@@ -1567,6 +1567,37 @@ body.modal-open {
   margin: 1.7rem auto 0;
 }
 
+/* Precision method figures inherit the existing project-page palette. */
+.precision-figure {
+  margin: 1.8rem 0 0;
+}
+
+.precision-figure > a {
+  display: block;
+  border-radius: var(--border-radius);
+}
+
+.precision-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.model-stage-grid figcaption {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  margin-top: 0.8rem;
+}
+
+.precision-figure > a:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 4px;
+}
+
+
+
+
 .model-stage-grid figure {
   margin: 0;
   min-width: 0;
@@ -1820,4 +1851,70 @@ body.modal-open {
 .hero,
 .section {
   animation: none;
+}
+
+/* Main stage diagrams lead; implementation details stay secondary. */
+#models > .container {
+  max-width: 1040px;
+}
+
+#models .model-stage-grid figcaption {
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 650;
+}
+
+#models .precision-section {
+  border-top: 1px solid var(--border-color);
+  max-width: 880px;
+  margin: 2rem auto 0;
+  padding-top: 1.25rem;
+  scroll-margin-top: 5rem;
+}
+
+#precision-title {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.precision-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.75rem;
+}
+
+#models .precision-figure {
+  min-width: 0;
+  margin: 0;
+}
+
+.precision-figure figcaption {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-top: 0.6rem;
+}
+
+.model-resources-title {
+  margin-top: 2.5rem;
+}
+
+.model-resources-title + .model-list {
+  margin-top: 1rem;
+}
+
+.publication-author-note {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-top: 0.65rem;
+}
+
+.author-mark {
+  font-size: 0.7em;
+  margin-left: 0.12em;
+}
+
+.publication-author-note .advisor-note {
+  margin-left: 1rem;
 }

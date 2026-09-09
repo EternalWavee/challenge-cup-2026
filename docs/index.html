@@ -8,7 +8,7 @@
   <meta name="title" content="TerraScope：面向端侧部署的多模态遥感影像理解系统">
   <meta name="description" content="TerraScope 是一套面向端侧部署的多模态遥感影像理解系统，支持自然语言交互与专业语义分割。">
   <meta name="keywords" content="TerraScope, remote sensing, multimodal model, visual grounding, object counting, semantic segmentation, MiniCPM-V, SegFormer">
-  <meta name="author" content="Hengtao Wu, Ningkai Wu, Xuanrui Cui, Yanchen Li, Hao Li">
+  <meta name="author" content="Hengtao Wu, Xuanrui Cui, Ningkai Wu, Yanchen Li, Hao Li, Yujia Zhang, Haonan Ma, Yufei Yan, Yuting Jiang, Wenxuan Liu, Feiming Wei, Tao Zhang, Jin Ma">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0b4f9c">
 
@@ -28,7 +28,7 @@
   <link rel="apple-touch-icon" href="static/images/sjtu-emblem.png">
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="static/css/index.css?v=20260909-author-notes">
   <script defer src="static/js/fontawesome.all.min.js"></script>
   <script defer src="static/js/index.js"></script>
 
@@ -43,10 +43,18 @@
     "programmingLanguage": ["Python", "TypeScript"],
     "author": [
       {"@type": "Person", "name": "Hengtao Wu"},
-      {"@type": "Person", "name": "Ningkai Wu"},
       {"@type": "Person", "name": "Xuanrui Cui"},
+      {"@type": "Person", "name": "Ningkai Wu"},
       {"@type": "Person", "name": "Yanchen Li"},
-      {"@type": "Person", "name": "Hao Li"}
+      {"@type": "Person", "name": "Hao Li"},
+      {"@type": "Person", "name": "Yujia Zhang"},
+      {"@type": "Person", "name": "Haonan Ma"},
+      {"@type": "Person", "name": "Yufei Yan"},
+      {"@type": "Person", "name": "Yuting Jiang"},
+      {"@type": "Person", "name": "Wenxuan Liu"},
+      {"@type": "Person", "name": "Feiming Wei", "url": "https://sais.sjtu.edu.cn/faculty/weifeiming.html"},
+      {"@type": "Person", "name": "Tao Zhang", "url": "https://sais.sjtu.edu.cn/faculty/zhangtao.html"},
+      {"@type": "Person", "name": "Jin Ma", "url": "https://sais.sjtu.edu.cn/faculty/majin.html"}
     ],
     "affiliation": {"@type": "CollegeOrUniversity", "name": "Shanghai Jiao Tong University"},
     "license": "https://www.apache.org/licenses/LICENSE-2.0"
@@ -84,15 +92,28 @@
 
             <p class="project-kicker">TerraScope · 天枢遥感</p>
             <h1 class="title is-1 publication-title">
-              面向端侧部署的多模态遥感影像理解系统
+              An Edge-Deployable Multimodal System<br>for Remote-Sensing Image Understanding
             </h1>
 
             <div class="is-size-5 publication-authors">
-              <span class="author-block"><a href="https://github.com/EternalWavee" target="_blank" rel="noopener">Hengtao Wu</a>,</span>
-              <span class="author-block"><a href="https://github.com/kiny007" target="_blank" rel="noopener">Ningkai Wu</a>,</span>
-              <span class="author-block"><a href="https://github.com/Xrrr-Ray" target="_blank" rel="noopener">Xuanrui Cui</a>,</span>
+              <span class="author-block"><a href="https://github.com/EternalWavee" target="_blank" rel="noopener">Hengtao Wu</a><sup class="author-mark" aria-label="Equal contribution">*</sup>,</span>
+              <span class="author-block"><a href="https://github.com/Xrrr-Ray" target="_blank" rel="noopener">Xuanrui Cui</a><sup class="author-mark" aria-label="Equal contribution">*</sup>,</span>
+              <span class="author-block"><a href="https://github.com/kiny007" target="_blank" rel="noopener">Ningkai Wu</a><sup class="author-mark" aria-label="Equal contribution">*</sup>,</span>
               <span class="author-block"><a href="https://github.com/yanchen12513" target="_blank" rel="noopener">Yanchen Li</a>,</span>
-              <span class="author-block"><a href="https://github.com/willaright" target="_blank" rel="noopener">Hao Li</a></span>
+              <span class="author-block"><a href="https://github.com/willaright" target="_blank" rel="noopener">Hao Li</a>,</span>
+              <span class="author-block">Yujia Zhang,</span>
+              <span class="author-block">Haonan Ma,</span>
+              <span class="author-block">Yufei Yan,</span>
+              <span class="author-block">Yuting Jiang,</span>
+              <span class="author-block">Wenxuan Liu,</span>
+              <span class="author-block"><a href="https://sais.sjtu.edu.cn/faculty/weifeiming.html" target="_blank" rel="noopener">Feiming Wei</a><sup class="author-mark">†</sup>,</span>
+              <span class="author-block"><a href="https://sais.sjtu.edu.cn/faculty/zhangtao.html" target="_blank" rel="noopener">Tao Zhang</a><sup class="author-mark">†</sup>,</span>
+              <span class="author-block"><a href="https://sais.sjtu.edu.cn/faculty/majin.html" target="_blank" rel="noopener">Jin Ma</a><sup class="author-mark">†</sup></span>
+            </div>
+
+            <div class="publication-authors publication-author-note">
+              <span class="author-block">* Equal contribution</span>
+              <span class="author-block advisor-note">† Advisor</span>
             </div>
 
             <div class="is-size-5 publication-authors publication-affiliation">
@@ -386,20 +407,40 @@
     </section>
 
     <section class="section hero is-light" id="models">
-      <div class="container is-max-desktop">
-        <h2 class="title is-3 has-text-centered">Models &amp; Resources</h2>
+      <div class="container is-widescreen">
+        <h2 class="title is-3 has-text-centered">Models &amp; Method</h2>
         <div class="model-stage-grid">
           <figure>
             <a href="static/images/model-stage1.pdf" target="_blank" rel="noopener" aria-label="Open the Stage 1 model diagram as PDF">
               <img src="static/images/model-stage1.png" alt="Stage 1 remote-sensing foundation model architecture" loading="lazy">
             </a>
+            <figcaption>Stage 1 · Remote-Sensing Adaptation</figcaption>
           </figure>
           <figure>
             <a href="static/images/model-stage2.pdf" target="_blank" rel="noopener" aria-label="Open the Stage 2 model diagram as PDF">
               <img src="static/images/model-stage2.png" alt="Stage 2 high-precision localization enhancement architecture" loading="lazy">
             </a>
+            <figcaption>Stage 2 · Localization Enhancement</figcaption>
           </figure>
         </div>
+        <section class="precision-section" id="precision" aria-labelledby="precision-title">
+          <h3 id="precision-title">Stage 2 · Method Details</h3>
+          <div class="precision-detail-grid">
+            <figure class="precision-figure">
+              <a href="static/images/precision-grounding-overview.png" target="_blank" rel="noopener" aria-label="Open the high-precision grounding diagram">
+                <img src="static/images/precision-grounding-overview.png" alt="Visual adaptation, Top-5 region selection, local grounding, coordinate mapping, and residual RL selection" width="2834" height="998" loading="lazy">
+              </a>
+              <figcaption>Grounding Pipeline</figcaption>
+            </figure>
+            <figure class="precision-figure">
+              <a href="static/images/precision-grounding-policy.jpg" target="_blank" rel="noopener" aria-label="Open the residual RL policy diagram">
+                <img src="static/images/precision-grounding-policy.jpg" alt="Detail of pipeline step 4: residual RL candidate selection and training feedback" width="5914" height="3333" loading="lazy">
+              </a>
+              <figcaption>Pipeline Step 4 · Residual RL Selection</figcaption>
+            </figure>
+          </div>
+        </section>
+        <h3 class="title is-4 model-resources-title">Downloads</h3>
         <div class="model-list">
           <article class="model-row">
             <div class="model-name">
@@ -433,8 +474,10 @@
         <pre id="bibtex-code"><code>@software{terrascope2026,
   title  = {TerraScope: An Edge-Deployable Multimodal System for
             Remote-Sensing Image Understanding},
-  author = {Wu, Hengtao and Wu, Ningkai and Cui, Xuanrui and
-            Li, Yanchen and Li, Hao},
+  author = {Wu, Hengtao and Cui, Xuanrui and Wu, Ningkai and
+            Li, Yanchen and Li, Hao and Zhang, Yujia and Ma, Haonan and
+            Yan, Yufei and Jiang, Yuting and Liu, Wenxuan and Wei, Feiming and
+            Zhang, Tao and Ma, Jin},
   year   = {2026},
   url    = {https://github.com/EternalWavee/challenge-cup-2026}
 }</code></pre>
@@ -449,7 +492,7 @@
         <i class="fas fa-xmark" aria-hidden="true"></i>
       </button>
       <span class="release-modal-label">Offline Release</span>
-      <h2 id="offline-release-title">下载完整离线包</h2>
+      <h2 id="offline-release-title">Download Offline Release</h2>
       <p>访问上海交通大学云盘时，请输入以下提取码。</p>
       <div class="release-code-row">
         <code>sjtu</code>
