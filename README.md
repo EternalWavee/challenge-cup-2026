@@ -20,6 +20,7 @@
 
 ## News
 
+- **2026-10-15**：Our demo is now live at https://model.tianshu.win/.
 - **2026-08-30**：发布代码仓库与 TerraScope-1.3B, TerraScope-Segformer 模型权重。
 
 ## 项目简介
@@ -141,50 +142,6 @@ modelscope download \
   --local_dir ./models/segmentation
 ```
 
-#### Offline mirror
-
-从网盘下载四份压缩包后，先将它们全部复制到仓库根目录（与 `start.sh` 同级）。
-
-> **交大云盘：** [TerraScope-release](https://pan.sjtu.edu.cn/web/share/0310508fe7468caeeef66e84b5545244)（提取码：`sjtu`）
-
-然后在仓库根目录执行：
-
-```bash
-mkdir -p env/packages
-mv terrascope-env.tar.gz segmentation-env.tar.gz env/packages/
-tar -xzf terrascope-model.tar.gz
-tar -xzf segmentation-model.tar.gz
-```
-
-两份模型包会解压到 `models/`；两份环境包必须保留在 `env/packages/`，供后续离线安装脚本读取。此时目录应为：
-
-```text
-challenge-cup-2026/
-├── models/
-│   ├── terrascope/
-│   ├── segmentation/
-│   ├── precision-selector/
-│   └── precision-router/
-└── env/packages/
-    ├── terrascope-env.tar.gz
-    └── segmentation-env.tar.gz
-```
-
-下载完成后，确认以下权重文件存在：
-
-```text
-models/
-├── terrascope/
-│   └── model.safetensors
-├── segmentation/
-│   └── checkpoint.pth
-├── precision-selector/
-│   └── adapter_model.safetensors
-└── precision-router/
-    ├── top3_policy.pt
-    └── top5_residual_policy.pt
-```
-
 ### 3. Python Environments
 
 TerraScope 与语义分割服务使用两套隔离环境。可以使用 uv、Conda 或预构建离线包安装；环境选择与模型权重下载方式互不影响。
@@ -207,17 +164,6 @@ bash ./env/install.sh conda
 ```
 
 Conda 本身的安装方法与两套环境的精确版本说明见 [`env/README.md`](env/README.md)。
-
-#### Install from offline packages
-
-从网盘下载两份环境包，放入 `env/packages/`。镜像适用于 Linux x86_64 与 NVIDIA CUDA 12.x 运行环境。
-
-> **交大云盘：** [TerraScope-release](https://pan.sjtu.edu.cn/web/share/0310508fe7468caeeef66e84b5545244)（提取码：`sjtu`）
-
-```text
-env/packages/terrascope-env.tar.gz
-env/packages/segmentation-env.tar.gz
-```
 
 校验并安装：
 
@@ -283,8 +229,6 @@ bash ./env/install.sh offline
 本项目基于 [MiniCPM-V](https://github.com/OpenBMB/MiniCPM-V)、[MMSegmentation](https://github.com/open-mmlab/mmsegmentation)、[SegFormer](https://github.com/NVlabs/SegFormer)、[MS-SWIFT](https://github.com/modelscope/ms-swift) 和 [LoveDA](https://github.com/Junjue-Wang/LoveDA) 构建。感谢相关作者与维护者对开源社区的贡献。
 
 ## Citation
-
-团队成员：Hengtao Wu、Xuanrui Cui、Ningkai Wu、Yanchen Li、Hao Li、Yujia Zhang、Haonan Ma、Yufei Yan、Yuting Jiang、Wenxuan Liu、Feiming Wei†、Tao Zhang†、Jin Ma†（† Advisor）。
 
 ```bibtex
 @software{terrascope2026,
